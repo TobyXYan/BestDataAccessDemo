@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&quot;$(ProjectDir)PreBuild.bat&quot; &quot;$(ProjectDir)&quot; &quot;$(ProjectName)&quot; &quot;$(ConfigurationName)&quot;" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;$(ProjectDir)PostBuild.bat&quot; &quot;$(ProjectDir)&quot; &quot;$(OutDir)&quot; &quot;$(TargetName)&quot; &quot;$(ConfigurationName)&quot;" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Caliburn.Micro" Version="3.2.0" />
+    <PackageReference Include="MediatR" Version="7.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DataAccessLib">
+      <HintPath>References\DataAccessLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
